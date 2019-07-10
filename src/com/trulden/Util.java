@@ -1,6 +1,7 @@
 package com.trulden;
 
 import java.io.*;
+import java.util.TreeSet;
 
 public class Util {
 
@@ -35,5 +36,14 @@ public class Util {
         }
 
         return null;
+    }
+
+    public static TreeSet<String> getDefaultInteractions() {
+        TreeSet<String> defaultInteractions = new TreeSet<>();
+
+        defaultInteractions.add("Встреча");
+        defaultInteractions.add("Переписка");
+
+        return defaultInteractions;
     }
 }
