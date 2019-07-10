@@ -4,10 +4,12 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class Main {
 
     private static HashMap<String, Person> persons;
+    private static TreeSet<String> interactions;
 
     public static void main(String[] args) {
 
