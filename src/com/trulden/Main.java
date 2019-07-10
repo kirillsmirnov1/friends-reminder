@@ -1,7 +1,6 @@
 package com.trulden;
 
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -41,6 +40,8 @@ public class Main {
         // Persons serialization
         try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(
                 new FileOutputStream("persons.out"))){
+
+            objectOutputStream.writeInt(persons.size());
 
             for(Map.Entry<String, Person> entry : persons.entrySet()){
                 objectOutputStream.writeObject(entry.getValue());
