@@ -2,12 +2,9 @@ package com.trulden;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
-import static java.lang.System.exit;
 
 public class Main {
 
