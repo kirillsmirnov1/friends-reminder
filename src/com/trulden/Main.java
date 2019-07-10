@@ -51,8 +51,11 @@ public class Main {
     private static void addFriend() {
         System.out.print("Enter friend's name: ");
         String name = new Scanner(System.in).nextLine();
-        // TODO проверять на наличие друга с таким именем
-        persons.put(name, new Person(name));
+        if(persons.containsKey(name)){
+            System.out.println("You already have friend named «" + name + "»");
+        } else {
+            persons.put(name, new Person(name));
+        }
     }
 
     private static void init() {
