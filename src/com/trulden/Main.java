@@ -10,6 +10,8 @@ public class Main {
     private static HashMap<String, Person> persons;
     private static TreeSet<String> interactions;
 
+    private static final String personsFileName = "persons.out";
+
     public static void main(String[] args) {
 
         init();
@@ -38,7 +40,7 @@ public class Main {
 
     private static void exit() {
 
-        Util.serialize(persons, "persons.out"); // TODO имя файла в константу
+        Util.serialize(persons, personsFileName);
 
         System.exit(0);
     }
@@ -71,6 +73,6 @@ public class Main {
 
     private static void init() {
         persons = new HashMap<>();
-        persons = (HashMap<String, Person>) Util.deserialize("persons.out");
+        persons = (HashMap<String, Person>) Util.deserialize(personsFileName);
     }
 }
