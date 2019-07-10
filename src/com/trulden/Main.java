@@ -37,16 +37,7 @@ public class Main {
 
     private static void exit() {
 
-        // Persons serialization
-        try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(
-                new FileOutputStream("persons.out"))){
-
-            objectOutputStream.writeObject(persons);
-
-        } catch (Exception e){
-            System.out.println("Serialization error");
-            e.printStackTrace();
-        }
+        Util.serialize(persons, "persons.out"); // TODO имя файла в константу
 
         System.exit(0);
     }
@@ -79,20 +70,6 @@ public class Main {
 
     private static void init() {
         persons = new HashMap<>();
-
-        // Deserialization
-        try(ObjectInputStream objectInputStream = new ObjectInputStream(
-                new FileInputStream("persons.out"))){
-
-            persons = (HashMap<String, Person>) objectInputStream.readObject();
-
-        } catch (Exception e){
-            if(e.getClass() == FileNotFoundException.class) {
-                System.out.println("File «persons.out» not found");
-            } else {
-                System.out.println("Error in deserialization");
-                e.printStackTrace();
-            }
-        }
+        persons = (HashMap<String, Person>) Util.deserialize("persons.out");
     }
 }
