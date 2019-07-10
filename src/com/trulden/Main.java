@@ -1,18 +1,17 @@
 package com.trulden;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Main {
 
-    private static HashMap<String, Person> persons;
-    private static TreeSet<String> interactionTypes;
+    private static HashMap<String, Person>  persons;
+    private static TreeSet<String>          interactionTypes;
+    private static ArrayList<Interaction>   interactions;
 
     private static final String personsFileName          = "persons.out";
     private static final String interactionTypesFileName = "interactionTypes.out";
+    private static final String interactionsFileName = "interactions.out";
 
     public static void main(String[] args) {
 
@@ -44,6 +43,7 @@ public class Main {
 
         Util.serialize(persons, personsFileName);
         Util.serialize(interactionTypes, interactionTypesFileName);
+        Util.serialize(interactions, interactionsFileName);
 
         System.exit(0);
     }
@@ -82,5 +82,9 @@ public class Main {
         interactionTypes = (new File(interactionTypesFileName).exists())
                 ? (TreeSet<String>) Util.deserialize(interactionTypesFileName)
                 : Util.getDefaultInteractions();
+
+        interactions = (new File (interactionsFileName).exists())
+                ? (ArrayList<Interaction>) Util.deserialize(interactionsFileName)
+                : new ArrayList<>();
     }
 }
