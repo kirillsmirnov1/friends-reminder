@@ -1,5 +1,6 @@
 package com.trulden;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -73,7 +74,8 @@ public class Main {
     }
 
     private static void init() {
-        persons = new HashMap<>();
-        persons = (HashMap<String, Person>) Util.deserialize(personsFileName);
+        persons = (new File(personsFileName).exists())
+                ? (HashMap<String, Person>) Util.deserialize(personsFileName)
+                : new HashMap<>();
     }
 }
