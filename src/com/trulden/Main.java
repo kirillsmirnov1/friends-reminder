@@ -41,11 +41,7 @@ public class Main {
         try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(
                 new FileOutputStream("persons.out"))){
 
-            objectOutputStream.writeInt(persons.size());
-
-            for(Map.Entry<String, Person> entry : persons.entrySet()){
-                objectOutputStream.writeObject(entry.getValue());
-            }
+            objectOutputStream.writeObject(persons);
 
         } catch (Exception e){
             System.out.println("Serialization error");
@@ -88,12 +84,7 @@ public class Main {
         try(ObjectInputStream objectInputStream = new ObjectInputStream(
                 new FileInputStream("persons.out"))){
 
-            int size = objectInputStream.readInt();
-
-            for(int i = 0; i < size; ++i){
-                Person person = (Person) objectInputStream.readObject();
-                persons.put(person.getName(), person);
-            }
+            persons = (HashMap<String, Person>) objectInputStream.readObject();
 
         } catch (Exception e){
             if(e.getClass() == FileNotFoundException.class) {
