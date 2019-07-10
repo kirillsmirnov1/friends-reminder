@@ -51,10 +51,15 @@ public class Main {
     private static void addFriend() {
         System.out.print("Enter friend's name: ");
         String name = new Scanner(System.in).nextLine();
+        System.out.println(addFriend(name));
+    }
+
+    private static String addFriend(String name){
         if(persons.containsKey(name)){
-            System.out.println("You already have friend named «" + name + "»");
+            return ("You already have friend named «" + name + "»");
         } else {
             persons.put(name, new Person(name));
+            return ("«" + name + "» added to friends");
         }
     }
 
