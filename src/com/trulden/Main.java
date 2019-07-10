@@ -1,18 +1,19 @@
 package com.trulden;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
 
 public class Main {
 
-    private static ArrayList<Person> persons;
+    private static HashMap<String, Person> persons;
 
     public static void main(String[] args) {
 
         init();
-
         mainCycle();
 
     }
@@ -39,9 +40,8 @@ public class Main {
     private static void listFriends() {
         if(persons.size() > 0) {
             System.out.println("\nYour friends:");
-            for (Person person : persons) {
-
-                System.out.println(" " + person.getName());
+            for (Map.Entry<String, Person> entry : persons.entrySet()) {
+                System.out.println(" " + entry.getValue().getName());
             }
         } else {
             System.out.println("\nYou have no friends");
@@ -51,10 +51,11 @@ public class Main {
     private static void addFriend() {
         System.out.print("Enter friend's name: ");
         String name = new Scanner(System.in).nextLine();
-        persons.add(new Person(name));
+        // TODO проверять на наличие друга с таким именем
+        persons.put(name, new Person(name));
     }
 
     private static void init() {
-        persons = new ArrayList<>();
+        persons = new HashMap<>();
     }
 }
