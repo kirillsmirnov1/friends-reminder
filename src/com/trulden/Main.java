@@ -10,7 +10,8 @@ public class Main {
     private static HashMap<String, Person> persons;
     private static TreeSet<String> interactions;
 
-    private static final String personsFileName = "persons.out";
+    private static final String personsFileName      = "persons.out";
+    private static final String interactionsFileName = "interactions.out";
 
     public static void main(String[] args) {
 
