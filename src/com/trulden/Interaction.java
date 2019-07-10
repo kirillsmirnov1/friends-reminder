@@ -17,4 +17,11 @@ public class Interaction {
         this.comment = comment;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public Date getDate() {
+        return date;
+    }
 }
