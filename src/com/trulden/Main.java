@@ -9,10 +9,10 @@ import java.util.TreeSet;
 public class Main {
 
     private static HashMap<String, Person> persons;
-    private static TreeSet<String> interactions;
+    private static TreeSet<String> interactionTypes;
 
-    private static final String personsFileName      = "persons.out";
-    private static final String interactionsFileName = "interactions.out";
+    private static final String personsFileName          = "persons.out";
+    private static final String interactionTypesFileName = "interactionTypes.out";
 
     public static void main(String[] args) {
 
@@ -43,7 +43,7 @@ public class Main {
     private static void exit() {
 
         Util.serialize(persons, personsFileName);
-        Util.serialize(interactions, interactionsFileName);
+        Util.serialize(interactionTypes, interactionTypesFileName);
 
         System.exit(0);
     }
@@ -79,8 +79,8 @@ public class Main {
                 ? (HashMap<String, Person>) Util.deserialize(personsFileName)
                 : new HashMap<>();
 
-        interactions = (new File(interactionsFileName).exists())
-                ? (TreeSet<String>) Util.deserialize(interactionsFileName)
+        interactionTypes = (new File(interactionTypesFileName).exists())
+                ? (TreeSet<String>) Util.deserialize(interactionTypesFileName)
                 : Util.getDefaultInteractions();
     }
 }
