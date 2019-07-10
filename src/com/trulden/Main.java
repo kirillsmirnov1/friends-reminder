@@ -83,5 +83,25 @@ public class Main {
 
     private static void init() {
         persons = new HashMap<>();
+
+        // Deserialization
+        try(ObjectInputStream objectInputStream = new ObjectInputStream(
+                new FileInputStream("persons.out"))){
+
+            int size = objectInputStream.readInt();
+
+            for(int i = 0; i < size; ++i){
+                Person person = (Person) objectInputStream.readObject();
+                persons.put(person.getName(), person);
+            }
+
+        } catch (Exception e){
+            if(e.getClass() == FileNotFoundException.class) {
+                System.out.println("File «persons.out» not found");
+            } else {
+                System.out.println("Error in deserialization");
+                e.printStackTrace();
+            }
+        }
     }
 }
