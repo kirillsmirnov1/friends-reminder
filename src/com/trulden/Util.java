@@ -1,7 +1,9 @@
 package com.trulden;
 
 import java.io.*;
+import java.util.Date;
 import java.util.TreeSet;
+import java.util.concurrent.TimeUnit;
 
 public class Util {
 
@@ -45,5 +47,9 @@ public class Util {
         defaultInteractions.add("Переписка");
 
         return defaultInteractions;
+    }
+
+    public static int daysPassed(Date date) {
+        return (int) TimeUnit.DAYS.convert(new Date().getTime() - date.getTime(), TimeUnit.MILLISECONDS);
     }
 }
