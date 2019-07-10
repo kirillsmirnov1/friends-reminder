@@ -43,6 +43,7 @@ public class Main {
     private static void exit() {
 
         Util.serialize(persons, personsFileName);
+        Util.serialize(interactions, interactionsFileName);
 
         System.exit(0);
     }
@@ -77,5 +78,9 @@ public class Main {
         persons = (new File(personsFileName).exists())
                 ? (HashMap<String, Person>) Util.deserialize(personsFileName)
                 : new HashMap<>();
+
+        interactions = (new File(interactionsFileName).exists())
+                ? (TreeSet<String>) Util.deserialize(interactionsFileName)
+                : Util.getDefaultInteractions();
     }
 }
