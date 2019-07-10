@@ -1,5 +1,7 @@
 package com.trulden;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +26,7 @@ public class Main {
             System.out.println("\nEnter\n 0 to exit\n 1 to add friend\n 2 to list friends\n");
             switch(Integer.parseInt(scanner.nextLine())){
                 case 0:
-                    exit(0);
+                    exit();
                 case 1:
                     addFriend();
                     break;
@@ -35,6 +37,24 @@ public class Main {
                     System.out.println("Wrong input");
             }
         }
+    }
+
+    private static void exit() {
+
+        // Persons serialization
+        try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(
+                new FileOutputStream("persons.out"))){
+
+            for(Map.Entry<String, Person> entry : persons.entrySet()){
+                objectOutputStream.writeObject(entry.getValue());
+            }
+
+        } catch (Exception e){
+            System.out.println("Serialization error");
+            e.printStackTrace();
+        }
+
+        System.exit(0);
     }
 
     private static void listFriends() {
