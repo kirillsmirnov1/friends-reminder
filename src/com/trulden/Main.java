@@ -11,9 +11,9 @@ public class Main {
     private static TreeSet<String>          interactionTypes;
     private static ArrayList<Interaction>   interactions;
 
-    private static final String personsFileName          = "persons.out";
-    private static final String interactionTypesFileName = "interactionTypes.out";
-    private static final String interactionsFileName     = "interactions.out";
+    private static final String personsFileName          = "persons.xml";
+    private static final String interactionTypesFileName = "interactionTypes.xml";
+    private static final String interactionsFileName     = "interactions.xml";
 
     static Scanner inScanner = new Scanner(System.in);
 
