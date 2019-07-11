@@ -47,16 +47,18 @@ public class Person implements Serializable {
         lastInteractions = new HashMap<>();
     }
 
+    public String listInteractions(){
+        StringBuilder str = new StringBuilder();
+
+        for(Map.Entry<String, Integer> entry : lastInteractions.entrySet()){
+            str.append(entry.getKey() + " " + Util.daysPassed(Main.interactions.get(entry.getValue()).getDate()) + " days ago\n");
+        }
+
+        return str.toString();
+    }
+
     @Override
     public String toString(){
-//        StringBuilder str = new StringBuilder(name + "\n");
-//
-//        for(Map.Entry<String, Integer> entry : lastInteractions.entrySet()){
-//            str.append(entry.getKey() + " " + Util.daysPassed(Main.interactions.get(entry.getValue()).getDate()) + " days ago\n"); // TODO олучать доступ к массиву взаимодействий в Main
-//        }
-//
-//        return str.toString();
-
         return name;
     }
 
