@@ -85,6 +85,8 @@ public class Main {
             // TODO нормальный отлов
         }
 
+        // Interaction comment
+
         System.out.println("Tell me about your interaction\n");
 
         comment = inScanner.nextLine();
