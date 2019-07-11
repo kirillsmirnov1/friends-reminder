@@ -9,7 +9,7 @@ public class Main {
 
     private static HashMap<String, Person>  persons;
     private static TreeSet<String>          interactionTypes;
-    private static ArrayList<Interaction>   interactions;
+    static HashMap<Integer, Interaction>    interactions;
 
     private static final String filesFolder              = "data\\";
     private static final String personsFileName          = filesFolder + "persons.xml";
@@ -91,7 +91,7 @@ public class Main {
 
         Interaction interaction = new Interaction(names, type, date, comment);
 
-        interactions.add(interaction);
+        interactions.put(interaction.getId(),interaction);
 
         for(Person person : names){
             person.addInteraction(interaction);
@@ -183,7 +183,7 @@ public class Main {
                 : Util.getDefaultInteractions();
 
         interactions = (new File (interactionsFileName).exists())
-                ? (ArrayList<Interaction>) Util.deserialize(interactionsFileName)
-                : new ArrayList<>();
+                ? (HashMap<Integer, Interaction>) Util.deserialize(interactionsFileName)
+                : new HashMap<>();
     }
 }
