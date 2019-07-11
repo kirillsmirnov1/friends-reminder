@@ -102,11 +102,11 @@ public class Main {
 
     private static String readType() {
         System.out.println("Enter type of meeting. \nYou can choose one of the following:\n");
-        listInteractions();
+        listTypesOfInteractions();
         return inScanner.nextLine(); // TODO input of new type
     }
 
-    private static void listInteractions() {
+    private static void listTypesOfInteractions() {
         for(String interactionType : interactionTypes){
             System.out.println(" " + interactionType);
         }
