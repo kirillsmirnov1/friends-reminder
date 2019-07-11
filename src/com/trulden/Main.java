@@ -11,7 +11,9 @@ public class Main {
 
     private static final String personsFileName          = "persons.out";
     private static final String interactionTypesFileName = "interactionTypes.out";
-    private static final String interactionsFileName = "interactions.out";
+    private static final String interactionsFileName     = "interactions.out";
+
+    static Scanner inScanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
@@ -21,10 +23,9 @@ public class Main {
     }
 
     private static void mainCycle() {
-        Scanner scanner = new Scanner(System.in);
         while(true){
             System.out.println("\nEnter\n 0 to exit\n 1 to add friend\n 2 to list friends\n");
-            switch(Integer.parseInt(scanner.nextLine())){
+            switch(Integer.parseInt(inScanner.nextLine())){
                 case 0:
                     exit();
                 case 1:
