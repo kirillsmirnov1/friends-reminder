@@ -7,7 +7,7 @@ import java.util.Map;
 public class Person implements Serializable {
 
     private String name;
-    private HashMap<String, Interaction> lastInteractions;
+    private HashMap<String, Integer> lastInteractions;
 
     public Person(){
         name = "";
@@ -33,9 +33,9 @@ public class Person implements Serializable {
         if(!name.equals(that.getName()))
             return false;
 
-        for(Map.Entry<String, Interaction> entry : lastInteractions.entrySet()){
+        for(Map.Entry<String, Integer> entry : lastInteractions.entrySet()){
             if(!that.getLastInteractions().containsKey(entry.getKey())
-            || !that.getLastInteractions().get(entry.getKey()).getDate().equals(entry.getValue().getDate()))
+            || !that.getLastInteractions().get(entry.getKey()).equals(entry.getValue()))
                 return false;
         }
 
@@ -51,15 +51,15 @@ public class Person implements Serializable {
     public String toString(){
         StringBuilder str = new StringBuilder(name + "\n");
 
-        for(Map.Entry<String, Interaction> entry : lastInteractions.entrySet()){
-            str.append(entry.getKey() + " " + Util.daysPassed(entry.getValue().getDate()) + " days ago\n");
+        for(Map.Entry<String, Integer> entry : lastInteractions.entrySet()){
+            str.append(entry.getKey() + " " + Util.daysPassed(Main.interactions.get(entry.getValue()).getDate()) + " days ago\n"); // TODO олучать доступ к массиву взаимодействий в Main
         }
 
         return str.toString();
     }
 
     public void addInteraction(Interaction interaction){
-        lastInteractions.put(interaction.getType(), interaction);
+        lastInteractions.put(interaction.getType(), interaction.getId());
     }
 
     public void setName(String name){
@@ -70,11 +70,11 @@ public class Person implements Serializable {
         return name;
     }
 
-    public HashMap<String, Interaction> getLastInteractions() {
+    public HashMap<String, Integer> getLastInteractions() {
         return lastInteractions;
     }
 
-    public void setLastInteractions(HashMap<String, Interaction> lastInteractions) {
+    public void setLastInteractions(HashMap<String, Integer> lastInteractions) {
         this.lastInteractions = lastInteractions;
     }
 }
