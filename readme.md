@@ -5,7 +5,7 @@ Basic functionality to implement:
 - ~~serialization of friends~~
 - ~~add meeting entry — date and log~~
 - ~~see days from last meeting~~
-- XML serialization
+- ~~XML serialization~~
 - rename friend
 - friends birthday
 - qualities of a friend
