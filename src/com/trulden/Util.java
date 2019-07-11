@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Util {
 
-    // Reading object from file
+    // Writing object to file
     public static void serialize(Object object, String fileName){
         try(XMLEncoder e = new XMLEncoder(
                 new BufferedOutputStream(
@@ -23,7 +23,7 @@ public class Util {
         }
     }
 
-    // Writing object to file
+    // Reading object from file
     public static Object deserialize(String fileName) {
 
         try(XMLDecoder d = new XMLDecoder(
