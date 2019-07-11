@@ -151,7 +151,7 @@ public class Main {
         if(persons.size() > 0) {
             System.out.println("\nYour friends:");
             for (Map.Entry<String, Person> entry : persons.entrySet()) {
-                System.out.print("\n " + entry.getValue().toString());
+                System.out.print("\n " + entry.getValue().toString() + "\n" + entry.getValue().listInteractions());
             }
         } else {
             System.out.println("\nYou have no friends");
@@ -173,7 +173,7 @@ public class Main {
         }
     }
 
-    private static void init() {
+    private static void init() { // FIXME проверять целостность данных
         persons = (new File(personsFileName).exists())
                 ? (HashMap<String, Person>) Util.deserialize(personsFileName)
                 : new HashMap<>();
