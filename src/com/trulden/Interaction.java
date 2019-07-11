@@ -1,10 +1,11 @@
 package com.trulden;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.TreeSet;
 
 // Interaction with one or several persons
-public class Interaction {
+public class Interaction implements Serializable {
     private final TreeSet<Person> persons;
     private final String type;
     private final Date date;
