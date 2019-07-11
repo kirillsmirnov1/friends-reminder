@@ -76,14 +76,7 @@ public class Main {
 
         // Date
 
-        System.out.print("Enter date of interaction in «dd MM yyyy» format: ");
-
-        try {
-            date = new SimpleDateFormat("dd MM yyyy").parse(inScanner.nextLine());
-        } catch (ParseException e){
-            e.printStackTrace();
-            // TODO нормальный отлов
-        }
+        date = readDate();
 
         // Interaction comment
 
@@ -100,6 +93,23 @@ public class Main {
         }
 
         System.out.println("Thanks! Interaction saved.");
+    }
+
+    private static Date readDate() {
+
+        System.out.print("Enter date of interaction in «dd MM yyyy» format: ");
+
+        try {
+            String inputDateLine = inScanner.nextLine();
+
+            if(inputDateLine.length() != 10)
+                throw new ParseException("Wrong length", 0);
+
+            return new SimpleDateFormat("dd MM yyyy").parse(inputDateLine);
+        } catch (ParseException e){
+            System.out.println("There was some mistake. Try again");
+            return readDate();
+        }
     }
 
     private static String readType() {
