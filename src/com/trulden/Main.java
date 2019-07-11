@@ -11,9 +11,10 @@ public class Main {
     private static TreeSet<String>          interactionTypes;
     private static ArrayList<Interaction>   interactions;
 
-    private static final String personsFileName          = "persons.xml";
-    private static final String interactionTypesFileName = "interactionTypes.xml";
-    private static final String interactionsFileName     = "interactions.xml";
+    private static final String filesFolder              = "data\\";
+    private static final String personsFileName          = filesFolder + "persons.xml";
+    private static final String interactionTypesFileName = filesFolder + "interactionTypes.xml";
+    private static final String interactionsFileName     = filesFolder + "interactions.xml";
 
     static Scanner inScanner = new Scanner(System.in);
 
