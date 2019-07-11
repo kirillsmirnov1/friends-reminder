@@ -61,7 +61,7 @@ public class Main {
 
         // Friends names
 
-        System.out.println("To whom you wish to add interaction?\nEnter names divided by comma");
+        System.out.println("\nTo whom you wish to add interaction?\nEnter names divided by comma");
 
         String[] enteredNames = inScanner.nextLine().split(", ");
 
