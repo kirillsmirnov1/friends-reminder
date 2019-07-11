@@ -11,9 +11,10 @@ public class Main {
     private static TreeSet<String>          interactionTypes;
     private static ArrayList<Interaction>   interactions;
 
-    private static final String personsFileName          = "persons.out";
-    private static final String interactionTypesFileName = "interactionTypes.out";
-    private static final String interactionsFileName     = "interactions.out";
+    private static final String filesFolder              = "data\\";
+    private static final String personsFileName          = filesFolder + "persons.xml";
+    private static final String interactionTypesFileName = filesFolder + "interactionTypes.xml";
+    private static final String interactionsFileName     = filesFolder + "interactions.xml";
 
     static Scanner inScanner = new Scanner(System.in);
 
@@ -61,7 +62,7 @@ public class Main {
 
         // Friends names
 
-        System.out.println("To whom you wish to add interaction?\nEnter names divided by comma");
+        System.out.println("\nTo whom you wish to add interaction?\nEnter names divided by comma");
 
         String[] enteredNames = inScanner.nextLine().split(", ");
 

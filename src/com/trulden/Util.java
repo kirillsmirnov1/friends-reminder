@@ -1,5 +1,7 @@
 package com.trulden;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
 import java.io.*;
 import java.util.Date;
 import java.util.TreeSet;
@@ -7,26 +9,32 @@ import java.util.concurrent.TimeUnit;
 
 public class Util {
 
-    // Reading object from file
+    // Writing object to file
     public static void serialize(Object object, String fileName){
-        try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(
-                new FileOutputStream(fileName))){
+        try(XMLEncoder e = new XMLEncoder(
+                new BufferedOutputStream(
+                        new FileOutputStream(fileName)))){
 
-            objectOutputStream.writeObject(object);
-
+            e.writeObject(object);
+            e.flush();
         } catch (Exception e){
             System.out.println("Serialization error");
             e.printStackTrace();
         }
     }
 
-    // Writing object to file
+    // Reading object from file
     public static Object deserialize(String fileName) {
 
-        try(ObjectInputStream objectInputStream = new ObjectInputStream(
-                new FileInputStream(fileName))){
+        try(XMLDecoder d = new XMLDecoder(
+                new BufferedInputStream(
+                        new FileInputStream(fileName)))){
 
-            return objectInputStream.readObject();
+            Object o = d.readObject();
+
+            d.close();
+
+            return o;
 
         } catch (Exception e){
             if(e.getClass() == FileNotFoundException.class) {

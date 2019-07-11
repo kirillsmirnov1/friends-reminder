@@ -9,7 +9,7 @@ public class Person implements Serializable {
     private String name;
     private HashMap<String, Interaction> lastInteractions;
 
-    Person(){
+    public Person(){
         name = "";
         lastInteractions = new HashMap<>();
     }
