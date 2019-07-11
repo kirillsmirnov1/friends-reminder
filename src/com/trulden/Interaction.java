@@ -12,7 +12,7 @@ public class Interaction implements Serializable {
     private Date date;
     private String comment;
 
-    Interaction(){
+    public Interaction(){
         persons = new HashSet<>();
         type = "";
         date = new Date();
