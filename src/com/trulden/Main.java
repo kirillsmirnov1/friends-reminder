@@ -1,6 +1,8 @@
 package com.trulden;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Main {
@@ -24,7 +26,12 @@ public class Main {
 
     private static void mainCycle() {
         while(true){
-            System.out.println("\nEnter\n 0 to exit\n 1 to add friend\n 2 to list friends\n");
+            System.out.println(
+                    "\nEnter" +
+                    "\n 0 to exit" +
+                    "\n 1 to add friend" +
+                    "\n 2 to list friends" +
+                    "\n 3 to add interaction\n");
             switch(Integer.parseInt(inScanner.nextLine())){
                 case 0:
                     exit();
@@ -34,8 +41,98 @@ public class Main {
                 case 2:
                     listFriends();
                     break;
+                case 3:
+                    addInteraction();
+                    break;
                 default:
                     System.out.println("Wrong input");
+            }
+        }
+    }
+
+    private static void addInteraction() {
+
+        HashSet<Person> names = new HashSet<>();
+        String type;
+        Date date = new Date();
+        String comment;
+
+        listFriends();
+
+        // Friends names
+
+        System.out.println("To whom you wish to add interaction?\nEnter names divided by comma");
+
+        String[] enteredNames = inScanner.nextLine().split(", ");
+
+        for(String name : enteredNames) {
+            checkAndAddName(name, names);
+        }
+
+        // Type
+
+        type = readType();
+
+        // Date
+
+        System.out.print("Enter date of interaction in «dd MM yyyy» format: ");
+
+        try {
+            date = new SimpleDateFormat("dd MM yyyy").parse(inScanner.nextLine());
+        } catch (ParseException e){
+            e.printStackTrace();
+            // TODO нормальный отлов
+        }
+
+        System.out.println("Tell me about your interaction\n");
+
+        comment = inScanner.nextLine();
+
+        Interaction interaction = new Interaction(names, type, date, comment);
+
+        interactions.add(interaction);
+
+        for(Person person : names){
+            person.addInteraction(interaction);
+        }
+
+        System.out.println("Thanks! Interaction saved.");
+    }
+
+    private static String readType() {
+        System.out.println("Enter type of meeting. \nYou can choose one of the following:\n");
+        listInteractions();
+        return inScanner.nextLine(); // TODO input of new type
+    }
+
+    private static void listInteractions() {
+        for(String interactionType : interactionTypes){
+            System.out.println(" " + interactionType);
+        }
+    }
+
+    private static void checkAndAddName(String name, HashSet<Person> names) {
+        if (persons.containsKey(name)) {
+            names.add(persons.get(name));
+        } else {
+            System.out.println("You don't have friend named «" + name + "»" +
+                    "\nEnter 1 to create new friend, 2 to change entered name, 3 to forget about this misunderstanding");
+            switch(Integer.parseInt(inScanner.nextLine())){
+                case 1:
+                    addFriend(name);
+                    names.add(persons.get(name));
+                    System.out.println("«" + name + "» created");
+                    break;
+                case 2:
+                    System.out.print("Enter name instead of «" + name + "»: " );
+                    checkAndAddName(inScanner.nextLine(), names);
+                    break;
+                case 3:
+                    System.out.println("«" + name + "» is forgotten");
+                    break;
+                default:
+                    System.out.println("Wrong input, mate");
+                    checkAndAddName(name, names);
             }
         }
     }
