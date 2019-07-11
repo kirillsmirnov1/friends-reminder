@@ -101,9 +101,22 @@ public class Main {
     }
 
     private static String readType() {
-        System.out.println("Enter type of meeting. \nYou can choose one of the following:\n");
+        System.out.println("Enter type of meeting. \nYou can choose one of the following or enter a new one\n");
         listTypesOfInteractions();
-        return inScanner.nextLine(); // TODO input of new type
+        String type = inScanner.nextLine();
+        if(interactionTypes.contains(type)){
+            return type;
+        } else {
+            System.out.println("Type «" + type + "» doesn't exist\nEnter 1 to create or 2 to write something else");
+            switch(Integer.parseInt(inScanner.nextLine())){
+                case 1:
+                    interactionTypes.add(type);
+                    return type;
+                case 2:
+                default:
+                    return readType();
+            }
+        }
     }
 
     private static void listTypesOfInteractions() {
