@@ -7,16 +7,23 @@ import java.util.Objects;
 
 // Interaction with one or several persons
 public class Interaction implements Serializable {
+
+    private static int numberOfInteractions = 0;
+
     private HashSet<Person> persons;
     private String type;
     private Date date;
     private String comment;
 
-    Interaction(){
+    private int id;
+
+    public Interaction(){
         persons = new HashSet<>();
         type = "";
         date = new Date();
         comment = "";
+
+        id = numberOfInteractions++;
     }
 
     Interaction(HashSet<Person> persons, String type, Date date, String comment){
@@ -24,38 +31,8 @@ public class Interaction implements Serializable {
         this.type = type;
         this.date = date;
         this.comment = comment;
-    }
 
-    public String getType() {
-        return type;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public HashSet<Person> getPersons() {
-        return persons;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setPersons(HashSet<Person> persons) {
-        this.persons = persons;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
+        id = numberOfInteractions++;
     }
 
     @Override
@@ -91,5 +68,53 @@ public class Interaction implements Serializable {
                 ", date=" + date +
                 ", comment='" + comment + '\'' +
                 '}';
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public HashSet<Person> getPersons() {
+        return persons;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setPersons(HashSet<Person> persons) {
+        this.persons = persons;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public static int getNumberOfInteractions() {
+        return numberOfInteractions;
+    }
+
+    public static void setNumberOfInteractions(int numberOfInteractions) {
+        Interaction.numberOfInteractions = numberOfInteractions;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
