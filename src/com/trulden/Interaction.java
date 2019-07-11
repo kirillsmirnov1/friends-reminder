@@ -10,7 +10,7 @@ public class Interaction implements Serializable {
 
     private static int numberOfInteractions = 0;
 
-    private HashSet<Person> persons;
+    private HashSet<String> persons;
     private String type;
     private Date date;
     private String comment;
@@ -26,7 +26,7 @@ public class Interaction implements Serializable {
         id = numberOfInteractions++;
     }
 
-    Interaction(HashSet<Person> persons, String type, Date date, String comment){
+    Interaction(HashSet<String> persons, String type, Date date, String comment){
         this.persons = persons;
         this.type = type;
         this.date = date;
@@ -44,7 +44,7 @@ public class Interaction implements Serializable {
         if(persons.size() != that.persons.size())
             return false;
 
-        for(Person person : persons){
+        for(String person : persons){
             if(!that.persons.contains(person))
                 return false;
         }
@@ -78,7 +78,7 @@ public class Interaction implements Serializable {
         return date;
     }
 
-    public HashSet<Person> getPersons() {
+    public HashSet<String> getPersons() {
         return persons;
     }
 
@@ -86,7 +86,7 @@ public class Interaction implements Serializable {
         return comment;
     }
 
-    public void setPersons(HashSet<Person> persons) {
+    public void setPersons(HashSet<String> persons) {
         this.persons = persons;
     }
 

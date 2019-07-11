@@ -53,7 +53,7 @@ public class Main {
 
     private static void addInteraction() {
 
-        HashSet<Person> names = new HashSet<>();
+        HashSet<String> names = new HashSet<>();
         String type;
         Date date = new Date();
         String comment;
@@ -93,8 +93,8 @@ public class Main {
 
         interactions.put(interaction.getId(),interaction);
 
-        for(Person person : names){
-            person.addInteraction(interaction);
+        for(String person : names){
+            persons.get(person).addInteraction(interaction);
         }
 
         System.out.println("Thanks! Interaction saved.");
@@ -112,16 +112,16 @@ public class Main {
         }
     }
 
-    private static void checkAndAddName(String name, HashSet<Person> names) {
+    private static void checkAndAddName(String name, HashSet<String> names) {
         if (persons.containsKey(name)) {
-            names.add(persons.get(name));
+            names.add(name);
         } else {
             System.out.println("You don't have friend named «" + name + "»" +
                     "\nEnter 1 to create new friend, 2 to change entered name, 3 to forget about this misunderstanding");
             switch(Integer.parseInt(inScanner.nextLine())){
                 case 1:
                     addFriend(name);
-                    names.add(persons.get(name));
+                    names.add(name);
                     System.out.println("«" + name + "» created");
                     break;
                 case 2:
