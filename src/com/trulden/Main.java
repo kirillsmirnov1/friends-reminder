@@ -150,7 +150,7 @@ public class Main {
         if(persons.size() > 0) {
             System.out.println("\nYour friends:");
             for (Map.Entry<String, Person> entry : persons.entrySet()) {
-                System.out.print(" " + entry.getValue().toString());
+                System.out.print("\n " + entry.getValue().toString());
             }
         } else {
             System.out.println("\nYou have no friends");
