@@ -49,13 +49,15 @@ public class Person implements Serializable {
 
     @Override
     public String toString(){
-        StringBuilder str = new StringBuilder(name + "\n");
+//        StringBuilder str = new StringBuilder(name + "\n");
+//
+//        for(Map.Entry<String, Integer> entry : lastInteractions.entrySet()){
+//            str.append(entry.getKey() + " " + Util.daysPassed(Main.interactions.get(entry.getValue()).getDate()) + " days ago\n"); // TODO олучать доступ к массиву взаимодействий в Main
+//        }
+//
+//        return str.toString();
 
-        for(Map.Entry<String, Integer> entry : lastInteractions.entrySet()){
-            str.append(entry.getKey() + " " + Util.daysPassed(Main.interactions.get(entry.getValue()).getDate()) + " days ago\n"); // TODO олучать доступ к массиву взаимодействий в Main
-        }
-
-        return str.toString();
+        return name;
     }
 
     public void addInteraction(Interaction interaction){
