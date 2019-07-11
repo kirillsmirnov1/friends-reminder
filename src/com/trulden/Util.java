@@ -16,7 +16,7 @@ public class Util {
                         new FileOutputStream(fileName)))){
 
             e.writeObject(object);
-            e.close();
+            e.flush();
         } catch (Exception e){
             System.out.println("Serialization error");
             e.printStackTrace();
