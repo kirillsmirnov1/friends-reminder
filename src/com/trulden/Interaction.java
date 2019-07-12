@@ -8,7 +8,7 @@ import java.util.Objects;
 import static com.trulden.Util.dateFormat;
 
 // Interaction with one or several persons
-public class Interaction implements Serializable {
+public class Interaction implements Serializable, Comparable<Interaction> {
 
     private static int numberOfInteractions = 0;
 
@@ -35,6 +35,11 @@ public class Interaction implements Serializable {
         this.comment = comment;
 
         id = numberOfInteractions++;
+    }
+
+    @Override
+    public int compareTo(Interaction o){
+        return this.getDate().compareTo(o.getDate());
     }
 
     @Override
