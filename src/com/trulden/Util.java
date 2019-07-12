@@ -3,11 +3,14 @@ package com.trulden;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 public class Util {
+
+    public static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM YY");
 
     // Writing object to file
     public static void serialize(Object object, String fileName){
