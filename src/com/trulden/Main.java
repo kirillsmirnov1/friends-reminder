@@ -2,8 +2,9 @@ package com.trulden;
 
 import java.io.File;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
+
+import static com.trulden.Util.dateFormat;
 
 public class Main {
 
@@ -107,7 +108,7 @@ public class Main {
 
     private static Date readDate() {
 
-        System.out.print("Enter date of interaction in «dd MM yyyy» format: ");
+        System.out.print("Enter date of interaction in «" + dateFormat.toPattern() + "» format: ");
 
         try {
             String inputDateLine = inScanner.nextLine();
@@ -115,7 +116,7 @@ public class Main {
             if(inputDateLine.length() != 10)
                 throw new ParseException("Wrong length", 0);
 
-            return new SimpleDateFormat("dd MM yyyy").parse(inputDateLine);
+            return dateFormat.parse(inputDateLine);
         } catch (ParseException e){
             System.out.println("There was some mistake. Try again");
             return readDate();
