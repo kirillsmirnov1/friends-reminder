@@ -57,8 +57,13 @@ public class Main {
     }
 
     private static void listInteractions() {
-        for(Map.Entry<Integer, Interaction> entry : interactions.entrySet()){
-            System.out.println(entry.getValue().toString());
+        ArrayList<Interaction> interactionsList = new ArrayList<>();
+        interactionsList.addAll(interactions.values());
+
+        Collections.sort(interactionsList, Collections.reverseOrder());
+
+        for(Interaction interaction : interactionsList){
+            System.out.println(interaction.toString());
         }
     }
 
