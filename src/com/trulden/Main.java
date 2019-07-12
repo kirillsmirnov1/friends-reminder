@@ -32,7 +32,8 @@ public class Main {
                     "\n 0 to exit" +
                     "\n 1 to add friend" +
                     "\n 2 to list friends" +
-                    "\n 3 to add interaction\n");
+                    "\n 3 to add interaction" +
+                    "\n 4 to list interactions");
             switch(Integer.parseInt(inScanner.nextLine())){
                 case 0:
                     exit();
@@ -45,9 +46,18 @@ public class Main {
                 case 3:
                     addInteraction();
                     break;
+                case 4:
+                    listInteractions();
+                    break;
                 default:
                     System.out.println("Wrong input");
             }
+        }
+    }
+
+    private static void listInteractions() {
+        for(Map.Entry<Integer, Interaction> entry : interactions.entrySet()){
+            System.out.println(entry.getValue().toString());
         }
     }
 
