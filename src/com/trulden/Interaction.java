@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 
+import static com.trulden.Util.dateFormat;
+
 // Interaction with one or several persons
 public class Interaction implements Serializable {
 
@@ -60,14 +62,13 @@ public class Interaction implements Serializable {
     }
 
     @Override
-    // FIXME it probably won't return readable string
     public String toString() {
-        return "Interaction{" +
-                "persons=" + persons +
-                ", type='" + type + '\'' +
-                ", date=" + date +
-                ", comment='" + comment + '\'' +
-                '}';
+        return
+                dateFormat.format(date) +
+                " • [" + id + "]" +
+                " • " + type +
+                " with " + persons +
+                " • " + comment;
     }
 
     public String getType() {
