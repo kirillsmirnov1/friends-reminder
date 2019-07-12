@@ -214,7 +214,9 @@ public class Main {
         }
     }
 
-    private static void init() { // FIXME проверять целостность данных
+    private static void init() {
+        // FIXME проверять целостность данных
+        // При попытке человека получить доступ к взаимодействию
         persons = (new File(personsFileName).exists())
                 ? (HashMap<String, Person>) Util.deserialize(personsFileName)
                 : new HashMap<>();
