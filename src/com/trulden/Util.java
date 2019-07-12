@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Util {
 
-    public static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM YY");
+    public static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yyyy");
 
     // Writing object to file
     public static void serialize(Object object, String fileName){
