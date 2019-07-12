@@ -6,6 +6,7 @@ Basic functionality to implement:
 - ~~add meeting entry — date and log~~
 - ~~see days from last meeting~~
 - ~~XML serialization~~
+- SQL instead of objects and XML
 - rename friend
 - friends birthday
 - qualities of a friend
